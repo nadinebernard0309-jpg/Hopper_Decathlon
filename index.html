@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
-<title>Hub Services Decathlon V45</title>
-<!-- V45 (18/11/2026) : « je veux une veste » n ajoute plus le dernier produit au panier ; « Continuer mes achats » repart d une recherche neuve. V44 (18/11/2026) : relance plus tardive (45 s, 90 s sur un produit, en pause pendant la fiche), reprise « je suis toujours là » sur le produit consulté, plus de carte conseil après une recommandation produit. V43 (18/11/2026) : carte « Hopper en tenue de lutin » retirée, texte de recommandation après le carrousel, lien « Autres coloris » aussi dans le chat. V42 (18/11/2026) : 14 produits running ajoutés (chaussures route/trail homme, femme, enfant, vêtements d hiver), tous avec photo ; pointures enfant et femme adaptées ; niveau confirmé mieux respecté ; chaussures demandées = uniquement des chaussures ; produits du bon public (femme, homme, enfant). V41 (18/11/2026) : produits sans photo retirés du catalogue (101 produits, tous avec photo réelle). V40 (17/11/2026) : après Vêtements, Hopper demande quel vêtement. V39 : un seul bouton panier, nouvelle conversation = remise à zéro. V38 : Commander n ajoute plus rien, panier remis à zéro à chaque visite. V37 : Hopper demande ce que le client cherche une fois l univers choisi. V36 : taille reprise et modifiable dans le panier, plus de bouton conseiller dans le chat. V35 : plus performant cohérent, hors sujet, offres de Noël (démo). V34 : « moins cher » sans répétition, fin de parcours si rien de moins cher. V33 : Déca redessiné d après les images de la fiche persona, écharpe de Noël permanente. V32 : Hopper incarné par Déca en lutin de Noël, tenue selon le sport. V31 : sport demandé respecté (basket ≠ rugby), recherche decathlon.fr si rayon absent. V30 : le client peut corriger une réponse du pré-diagnostic. V29 : ateliers conseillés + carrousel des autres ateliers ; une question n est plus prise pour un magasin. V28 : panier, accessoires, casque abîmé, accueil allégé — panier — taille, couleur, quantité depuis Hopper ou depuis la fiche article, commande et route Make « Commande » -->
+<title>Hub Services Decathlon V46</title>
+<!-- V46 (25/11/2026) : la durée demandée pour un programme d entraînement est respectée (1 à 12 semaines, ou en mois) ; les pointures enfant 24 à 33 sont comprises. V45 (18/11/2026) : « je veux une veste » n ajoute plus le dernier produit au panier ; « Continuer mes achats » repart d une recherche neuve. V44 (18/11/2026) : relance plus tardive (45 s, 90 s sur un produit, en pause pendant la fiche), reprise « je suis toujours là » sur le produit consulté, plus de carte conseil après une recommandation produit. V43 (18/11/2026) : carte « Hopper en tenue de lutin » retirée, texte de recommandation après le carrousel, lien « Autres coloris » aussi dans le chat. V42 (18/11/2026) : 14 produits running ajoutés (chaussures route/trail homme, femme, enfant, vêtements d hiver), tous avec photo ; pointures enfant et femme adaptées ; niveau confirmé mieux respecté ; chaussures demandées = uniquement des chaussures ; produits du bon public (femme, homme, enfant). V41 (18/11/2026) : produits sans photo retirés du catalogue (101 produits, tous avec photo réelle). V40 (17/11/2026) : après Vêtements, Hopper demande quel vêtement. V39 : un seul bouton panier, nouvelle conversation = remise à zéro. V38 : Commander n ajoute plus rien, panier remis à zéro à chaque visite. V37 : Hopper demande ce que le client cherche une fois l univers choisi. V36 : taille reprise et modifiable dans le panier, plus de bouton conseiller dans le chat. V35 : plus performant cohérent, hors sujet, offres de Noël (démo). V34 : « moins cher » sans répétition, fin de parcours si rien de moins cher. V33 : Déca redessiné d après les images de la fiche persona, écharpe de Noël permanente. V32 : Hopper incarné par Déca en lutin de Noël, tenue selon le sport. V31 : sport demandé respecté (basket ≠ rugby), recherche decathlon.fr si rayon absent. V30 : le client peut corriger une réponse du pré-diagnostic. V29 : ateliers conseillés + carrousel des autres ateliers ; une question n est plus prise pour un magasin. V28 : panier, accessoires, casque abîmé, accueil allégé — panier — taille, couleur, quantité depuis Hopper ou depuis la fiche article, commande et route Make « Commande » -->
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap">
@@ -1118,8 +1118,8 @@ function extract(t,raw){
   var sp=sportOf(t);if(sp&&(S.flow==="produit"||!s.sport))s.sport=sp;
   if(/neveu|niece|mon fils|petit.?fils|petite.?fille|mon enfant|mes enfants|\bado\b|adolescent|junior|\b(\d|1[0-4]) ans\b/.test(t))s.genre="enfant";else if(/femme|fille|experte|debutante|une coureuse/.test(t))s.genre="femme";else if(/homme|garcon/.test(t))s.genre="homme";else if(/enfant/.test(t)&&S.flow==="produit")s.genre="enfant";
   if((m=/(?:taille|je fais du|je fais un|je prends du|en taille)\s+(xxs|xs|s|m|l|xl|xxl|3xl)\b/.exec(t)))s.tailleVet=m[1].toUpperCase();
-  if((m=/(?:pointure|taille|du|en|fais du)\s*(3[4-9]|4[0-9])\b/.exec(t)))s.pointure=+m[1];
-  else if(a==="pointure"&&(m=/\b(3[4-9]|4[0-9])\b/.exec(t)))s.pointure=+m[1];
+  if((m=/(?:pointure|taille|du|en|fais du)\s*(2[4-9]|3[0-9]|4[0-9])\b/.exec(t)))s.pointure=+m[1];
+  else if(a==="pointure"&&(m=/\b(2[4-9]|3[0-9]|4[0-9])\b/.exec(t)))s.pointure=+m[1];
   if(/expert|competit|marathon|chrono/.test(t))s.niveau="expert";else if(/confirm|regulier|intermediaire|plusieurs fois/.test(t))s.niveau="confirmé";else if(/debut|reprise|jamais|novice/.test(t))s.niveau="débutant";
   if(/pas de limite|peu importe|illimite/.test(t))s.budget=99999;
   else if((m=/(\d{2,4})\s*(?:a|-)\s*(\d{2,4})\s*(?:€|eur)/.exec(t)))s.budget=+m[2];
@@ -1417,11 +1417,38 @@ var COACH={
  rando:"Pour bien débuter la randonnée :\n1. Choisissez un itinéraire court (2 à 3 h) avec peu de dénivelé.\n2. Partez tôt, vérifiez la météo et prévenez un proche.\n3. Emportez eau, encas, coupe-vent et une petite trousse de secours.\n4. Marchez à un rythme qui vous permet de discuter.",
  generic:"Avec plaisir ! Mes conseils pour bien commencer :\n1. Fixez-vous un objectif simple et progressif.\n2. Pratiquez 2 à 3 fois par semaine plutôt qu'une longue séance.\n3. Échauffez-vous toujours avant l'effort.\n4. Écoutez votre corps : en cas de douleur, faites une pause et consultez si elle persiste."
 };
+var NUMW={un:1,une:1,deux:2,trois:3,quatre:4,cinq:5,six:6,sept:7,huit:8,neuf:9,dix:10,onze:11,douze:12};
+function progWeeks(t){
+  var m=/(\d{1,2}|un|une|deux|trois|quatre|cinq|six|sept|huit|neuf|dix|onze|douze)\s*semaines?/.exec(t);
+  if(m)return Math.max(1,Math.min(12,/\d/.test(m[1])?+m[1]:NUMW[m[1]]));
+  m=/(\d{1,2}|un|deux|trois)\s*mois/.exec(t);
+  if(m)return Math.max(1,Math.min(12,(/\d/.test(m[1])?+m[1]:NUMW[m[1]])*4));
+  if(/\b(la|cette|une|1|sur la|pour la) semaine\b|semaine prochaine|hebdo/.test(t))return 1;
+  return 4;
+}
+var RUNW=["8 × (1 min C + 1 min M)","6 × (2 min C + 1 min M)","4 × (4 min C + 1 min M)","3 × (6 min C + 1 min M), puis 20 min continues en fin de semaine","2 × (10 min C + 2 min M)","25 min de course continue","30 min continues","2 × 30 min + 1 × 35 min","35 min, dont 5 min un peu plus vite","2 × 35 min + 1 × 40 min","40 min continues","2 × 40 min + 1 × 45 min (environ 5 à 6 km)"];
+function progRun(n){
+  var fin="\nToujours 5 min de marche rapide avant, et quelques étirements doux après.";
+  if(n===1)return "Programme 1 semaine, 3 séances (C = course, M = marche) :\nSéance 1 (lundi) : 8 × (1 min C + 1 min M)\nSéance 2 (mercredi) : 8 × (1 min C + 1 min M)\nSéance 3 (samedi) : 6 × (2 min C + 1 min M)\nLes autres jours : repos ou 20 min de marche."+fin+"\nEnvie de continuer ? Je peux vous proposer la suite sur 4 semaines.";
+  var r="Programme "+n+" semaines, 3 séances par semaine (C = course, M = marche) :";
+  for(var k=0;k<n;k++)r+="\nSemaine "+(k+1)+" : "+RUNW[k];
+  return r+fin;
+}
+var VELW=["3 × 30 min sur le plat, allure facile","2 × 40 min + 1 × 45 min","2 × 45 min + 1 × 1 h avec quelques petites côtes","2 × 45 min + 1 sortie de 1 h 15","2 × 50 min + 1 sortie de 1 h 30","2 × 1 h + 1 sortie de 1 h 30 avec des côtes","2 × 1 h + 1 sortie de 1 h 45","2 × 1 h + 1 sortie de 2 h","2 × 1 h + 1 sortie de 2 h avec des côtes","2 × 1 h 15 + 1 sortie de 2 h 15","2 × 1 h 15 + 1 sortie de 2 h 30","2 × 1 h 15 + 1 sortie de 2 h 45"];
+function progVelo(n){
+  var fin="\nGardez une allure où vous pouvez parler.";
+  if(n===1)return "Programme 1 semaine à vélo, 3 sorties :\nSortie 1 (lundi) : 30 min sur le plat, allure facile\nSortie 2 (mercredi) : 30 min sur le plat\nSortie 3 (samedi) : 40 min avec une ou deux petites côtes"+fin+"\nEnvie de continuer ? Je peux vous proposer la suite sur 4 semaines.";
+  var r="Programme "+n+" semaines à vélo, 3 sorties par semaine :";
+  for(var k=0;k<n;k++)r+="\nSemaine "+(k+1)+" : "+VELW[k];
+  return r+fin;
+}
 function coachReply(t){
   var sp=sportOf(t)||S.slots.sport||null;S.flow="coach";if(sp)S.slots.sport=sp;S.ask=null;S.slots.niveau="débutant";
   if(/blessure/.test(t))return {reponse:"Pour éviter les blessures :\n1. Augmentez votre volume d'entraînement progressivement (environ 10 % par semaine).\n2. Gardez au moins un jour de repos entre deux séances.\n3. Renforcez gainage et mollets 10 min, 2 fois par semaine.\n4. Utilisez un équipement adapté et en bon état.\nEn cas de douleur qui persiste, consultez un médecin.",service:"conseil",choix:[C("Un programme 4 semaines"),C(sp==="velo"?"Choisir mon vélo":"Choisir mon équipement"),C("Conseil en magasin")]};
-  if(/programme/.test(t)&&sp!=="velo")return {reponse:"Programme 4 semaines, 3 séances par semaine (C = course, M = marche) :\nSemaine 1 : 8 × (1 min C + 1 min M)\nSemaine 2 : 6 × (2 min C + 1 min M)\nSemaine 3 : 4 × (4 min C + 1 min M)\nSemaine 4 : 3 × (6 min C + 1 min M), puis 20 min continues en fin de semaine.\nToujours 5 min de marche rapide avant, et quelques étirements doux après.",service:"conseil",choix:[C("Éviter les blessures"),C("Choisir mes chaussures"),C("Conseil en magasin")]};
-  if(/programme/.test(t))return {reponse:"Programme 4 semaines à vélo, 3 sorties par semaine :\nSemaine 1 : 3 × 30 min sur le plat, allure facile\nSemaine 2 : 2 × 40 min + 1 × 45 min\nSemaine 3 : 2 × 45 min + 1 × 1 h avec quelques petites côtes\nSemaine 4 : 2 × 45 min + 1 sortie de 1 h 15\nGardez une allure où vous pouvez parler.",service:"conseil",choix:[C("Éviter les blessures"),C("Choisir mon vélo"),C("Conseil en magasin")]};
+  if(/programme|plan d.entrainement|entrainement sur|seances? sur/.test(t)){
+    var nw=progWeeks(t),velo=sp==="velo";
+    return {reponse:velo?progVelo(nw):progRun(nw),service:"conseil",choix:nw<4?[C("Un programme 4 semaines"),C(velo?"Choisir mon vélo":"Choisir mes chaussures"),C("Éviter les blessures")]:[C("Éviter les blessures"),C(velo?"Choisir mon vélo":"Choisir mes chaussures"),C("Conseil en magasin")]};
+  }
   if(/conseil en magasin/.test(t))return {reponse:"Un conseiller peut vous recevoir gratuitement 30 min en magasin pour faire le point sur votre pratique et votre équipement. Dans quelle ville souhaitez-vous ce rendez-vous ?",service:"conseil",choix:[]};
   var eq=sp==="running"?"Choisir mes chaussures":sp==="velo"?"Choisir mon vélo":"Choisir mon équipement";
   var reb=sp==="running"?"des chaussures adaptées pour débuter":sp==="velo"?"le vélo le plus adapté pour commencer":"l'équipement adapté pour bien démarrer";
