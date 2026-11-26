@@ -10,7 +10,7 @@ Hopper est l'assistant conversationnel du hub : il guide chaque client vers le b
 
 | Fichier | Rôle |
 |---|---|
-| `index.html` | Le hub complet et Hopper (version V45 du 18/11/2026), en un seul fichier |
+| `index.html` | Le hub complet et Hopper (version V46 du 26/11/2026), en un seul fichier |
 | `.nojekyll` | Permet à GitHub Pages de servir le fichier tel quel |
 
 ## Voir le site en ligne (GitHub Pages)
